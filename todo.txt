@@ -1,1 +1,21 @@
 ilerde inject işlemi yapılabilir tek yapılması gereken constract taki yolları değiştirmek EXIT_FILE_GIBI
+
+
+
+
+
+
+
+constants/
+utils/
+plugin/
+test/
+docs/
+*.log
+*.md
+todo.txt
+
+webpack.config.dev.ts
+webpack.config.main.ts
+webpack.config.prod.ts
+tsconfig.json

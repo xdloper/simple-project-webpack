@@ -1,5 +1,6 @@
 import path from 'path'
 import {fileExistController} from '../helpers/fileExistController.js'
+import {filePathFinder} from '../helpers/filePathFinder.js'
 
 // GLOBAL CONSTANTS
 export const __RELATIVE_PATH__:string = '../..'
@@ -11,7 +12,7 @@ export const __DIST__:string = 'dist'
 export const __MAIN__:string = path.resolve()
 export const __MAIN_SOURCE__:string = path.resolve(__SOURCE__)
 
-export const __ENV_PATH__:string | false= fileExistController(path.resolve('.env'))
+export const __ENV_PATH__: Array<string> = filePathFinder({URL:__RELATIVE_PATH__,fileName:".env",ignore:['node_modules']})  
 export const __SUPPORT_EXT_ARR__:Array<string> = [
     '.ts',
     '.tsx',
@@ -40,7 +41,3 @@ export const __WEB_FILE_PATH__:string | false = fileExistController(path.resolve
 
 export const __WEB_PLUGIN_FAVICON__:string | false = fileExistController(__RELATIVE_PATH__+__WEB_FILE_PATH__+'/icons/favicon.ico') || fileExistController(__SOURCE__+'/'+__PUBLIC__+'/icons/favicon.ico')
 export const __WEB_PLUGIN_TEMPLATE_DATA__:string | false = fileExistController('template-engine-data.json') || fileExistController('utils/constants/data/template-engine-data.json')
-
-
-
-

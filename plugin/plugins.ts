@@ -15,8 +15,9 @@ import {__WEB_FILE_PATH__,__SOURCE__,__ENV_PATH__,__WEB_PLUGIN_TEMPLATE__,__WEB_
 let templateEngineData = null;
 
 // environment variables setup 
-if(__ENV_PATH__ !== false){
-  dotenv.config({path:__ENV_PATH__});
+
+if(__ENV_PATH__[0]){
+  dotenv.config({path:__ENV_PATH__[0]});
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -42,10 +43,8 @@ const webFilePathController =  __WEB_FILE_PATH__ ? __WEB_FILE_PATH__ : __WEB_PLU
 
 webFileFindEngine(webFilePathController).forEach((webFilePath)=>{
 
-  console.log('girdi içeri')
   const result = fileExistController(path.resolve(webFilePathController!, webFilePath), false);
   const fallbackPath: string = result ? path.resolve(webFilePathController!, webFilePath) : __WEB_PLUGIN_TEMPLATE__
-  console.log(result,fallbackPath)
   const htmlWebPackPlugin = new HtmlWebPackPlugin({
     inject: 'body',
     title: process.env.X_NAME,
@@ -83,7 +82,7 @@ export const pluginConfig: webpack.Configuration['plugins'] = [
   }),
 
   // for webpack global varibles 
-  __ENV_PATH__ !== false ? new webpack.DefinePlugin({
+  __ENV_PATH__[0] ? new webpack.DefinePlugin({
     'process.env': JSON.stringify(process.env),
   }) : false,
 

@@ -1,3 +1,1 @@
-.env dosyasını tüm klasörde arasın ona göre işlem yapsın
-
 ilerde inject işlemi yapılabilir tek yapılması gereken constract taki yolları değiştirmek EXIT_FILE_GIBI
